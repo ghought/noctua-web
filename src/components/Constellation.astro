@@ -1,0 +1,74 @@
+---
+interface Props {
+  opacity?: number;
+  class?: string;
+}
+const { opacity = 1, class: className = '' } = Astro.props;
+
+// Deterministic star positions (x%, y%)
+const stars = [
+  [8, 12], [15, 8], [22, 18], [12, 25], [28, 10],
+  [35, 22], [42, 8], [48, 16], [55, 12], [62, 20],
+  [70, 8], [78, 14], [85, 22], [92, 10], [88, 30],
+  [75, 35], [65, 28], [58, 38], [48, 32], [38, 40],
+  [25, 35], [18, 42], [8, 38], [15, 55], [28, 60],
+  [42, 52], [55, 68], [68, 58], [82, 52], [92, 62],
+  [72, 75], [58, 82], [45, 78], [32, 88], [18, 82],
+  [8, 72], [92, 82],
+];
+
+// Constellation edges
+const lines = [
+  [0, 1], [1, 2], [1, 4], [2, 5], [4, 6], [5, 6],
+  [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12],
+  [12, 13], [13, 14], [14, 15], [15, 16], [16, 17],
+  [17, 18], [18, 19], [19, 20], [20, 21], [21, 22],
+  [22, 23], [23, 24], [24, 25], [25, 26], [26, 27],
+  [27, 28], [28, 29], [29, 30], [30, 31], [31, 32],
+  [32, 33], [33, 34], [34, 35], [3, 20], [9, 17],
+  [15, 26], [2, 9], [28, 36],
+];
+---
+
+<svg
+  class={`constellation ${className}`}
+  viewBox="0 0 100 100"
+  preserveAspectRatio="xMidYMid slice"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  style={`opacity: ${opacity}`}
+>
+  <!-- Connecting lines -->
+  {lines.map(([a, b]) => (
+    <line
+      x1={stars[a][0]}
+      y1={stars[a][1]}
+      x2={stars[b][0]}
+      y2={stars[b][1]}
+      stroke="#c9a866"
+      stroke-width="0.08"
+      opacity="0.18"
+    />
+  ))}
+
+  <!-- Stars -->
+  {stars.map(([x, y], i) => (
+    <circle
+      cx={x}
+      cy={y}
+      r={i % 7 === 0 ? 0.35 : i % 3 === 0 ? 0.25 : 0.18}
+      fill="#c9a866"
+      opacity={i % 5 === 0 ? 0.55 : i % 2 === 0 ? 0.35 : 0.25}
+    />
+  ))}
+</svg>
+
+<style>
+  .constellation {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+</style>

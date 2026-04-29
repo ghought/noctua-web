@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Privacy Policy — Noctua"
+  description="Noctua's privacy policy. Your dreams are deeply personal — we take that seriously."
+>
+  <main class="util-main">
+    <div class="container">
+      <header class="util-header">
+        <nav class="breadcrumb">
+          <a href="/" class="mono gold">← NOCTUA</a>
+        </nav>
+        <span class="mono gold section-label">LEGAL</span>
+        <h1 class="util-title">Privacy Policy</h1>
+        <p class="util-sub">
+          Your dreams are deeply personal. This policy explains exactly what we collect,
+          what we do with it, and how we protect it.
+        </p>
+        <hr class="hairline" style="margin-top: 2rem;" />
+      </header>
+
+      <div class="util-body">
+        <div class="redirect-notice frame-box">
+          <p class="mono gold" style="margin-bottom: 0.75rem; font-size: 0.625rem; letter-spacing: 0.16em;">FULL POLICY</p>
+          <p style="color: var(--text-soft); font-size: 1.0625rem; line-height: 1.7; margin-bottom: 1.5rem;">
+            The complete Noctua Privacy Policy is published on the app server and kept current there.
+            Click below to read it in full.
+          </p>
+          <a
+            href="https://noctua.up.railway.app/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Read the Full Privacy Policy →
+          </a>
+        </div>
+
+        <div class="util-summary">
+          <h2>The short version</h2>
+          <p>
+            Dreams are among the most private things a person can share. We designed Noctua's
+            data practices around that premise:
+          </p>
+          <ul>
+            <li>Your dream content is encrypted at rest and in transit.</li>
+            <li>We never use your dream content to train AI models — by contract and by design.</li>
+            <li>We collect only what we need to make the app work.</li>
+            <li>No third-party analytics pipelines ever process your dream content.</li>
+            <li>You can export all your data at any time, or delete your account and all associated data permanently.</li>
+            <li>We write our privacy policies in plain language, not legalese.</li>
+          </ul>
+          <p>
+            Questions? Reach us at <a href="mailto:privacy@noctua.app">privacy@noctua.app</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .util-main {
+    padding-top: 7rem;
+    padding-bottom: 8rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    transition: opacity 0.15s;
+  }
+  .breadcrumb a:hover { opacity: 0.7; }
+
+  .section-label {
+    display: block;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.875rem;
+  }
+
+  .util-title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .util-sub {
+    font-size: 1.125rem;
+    color: var(--text-soft);
+    max-width: 560px;
+    line-height: 1.65;
+  }
+
+  .util-body {
+    padding-top: 3rem;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .redirect-notice {
+    padding: 2rem;
+  }
+
+  .util-summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .util-summary p {
+    color: var(--text-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .util-summary ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .util-summary li {
+    display: flex;
+    gap: 0.875rem;
+    color: var(--text-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .util-summary li::before {
+    content: '—';
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  .util-summary a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-decoration-color: var(--gold-dim);
+    text-underline-offset: 3px;
+  }
+</style>

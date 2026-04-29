@@ -1,0 +1,108 @@
+---
+const nav = [
+  { href: '/blog', label: 'Journal' },
+  { href: '/#pricing', label: 'Pricing' },
+];
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark">
+      <span class="mono gold">NOCTUA</span>
+      <span class="mono dim separator">·</span>
+      <span class="mono dim tagline">DREAM JOURNAL</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      {nav.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={['nav-link mono', { active: path === href || (href !== '/' && path.startsWith(href)) }]}
+        >
+          {label.toUpperCase()}
+        </a>
+      ))}
+    </nav>
+
+    <a href="#download" class="btn-ghost nav-cta">
+      Download
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.125rem 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s, backdrop-filter 0.2s;
+  }
+
+  /* JS-enhanced scroll state added via inline script */
+  .site-header.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: var(--rule);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .wordmark .tagline {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .wordmark .tagline { display: inline; }
+  }
+  .separator { opacity: 0.35; }
+
+  .nav-links {
+    display: none;
+    align-items: center;
+    gap: 1.75rem;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .nav-links { display: flex; }
+  }
+
+  .nav-link {
+    color: var(--text-dim);
+    transition: color 0.15s;
+  }
+  .nav-link:hover,
+  .nav-link.active { color: var(--text-soft); }
+
+  .nav-cta {
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.625rem;
+  }
+  @media (min-width: 768px) {
+    .nav-cta { margin-left: 0; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const onScroll = () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

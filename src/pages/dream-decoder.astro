@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Dream Decoder — Noctua"
+  description="Paste a dream and get a brief interpretation — free, no account required. A preview of what Noctua does."
+>
+  <main class="decoder-main">
+    <div class="container">
+      <header class="decoder-header">
+        <nav class="breadcrumb">
+          <a href="/" class="mono gold">← NOCTUA</a>
+        </nav>
+        <span class="mono gold section-label">FREE TOOL</span>
+        <h1 class="decoder-title">Dream Decoder</h1>
+        <p class="decoder-sub">
+          A free interpretation of your dream — no account, no sign-up.
+          A preview of what Noctua does in full.
+        </p>
+        <hr class="hairline" style="margin-top: 2rem;" />
+      </header>
+
+      <div class="coming-soon frame-box">
+        <p class="mono dim" style="margin-bottom: 1rem; font-size: 0.625rem; letter-spacing: 0.16em;">STATUS · COMING SOON</p>
+        <h2 class="coming-title">
+          The Dream Decoder is being built.
+        </h2>
+        <p class="coming-desc">
+          Paste your dream, choose a framework, and receive a brief interpretation in seconds —
+          free, no login required. We're finishing it now. Join the newsletter to be notified
+          when it launches.
+        </p>
+        <div class="coming-cta">
+          <a href="/#newsletter" class="btn-primary">Get notified →</a>
+          <a href="/#download" class="btn-ghost">Download the App Now</a>
+        </div>
+      </div>
+
+      <div class="decoder-preview">
+        <h2 class="preview-heading">What it will do</h2>
+        <div class="preview-steps">
+          {[
+            { n: '01', title: 'Paste your dream', desc: 'Write or paste any dream — a full narrative, a fragment, just an image and a feeling. No minimum length.' },
+            { n: '02', title: 'Choose a framework', desc: 'Jungian, Cognitive, or Spiritual. Each produces a genuinely different interpretation of the same material.' },
+            { n: '03', title: 'Read your interpretation', desc: 'A ~150 word interpretation covering the core meaning. Short enough to read in a minute; substantive enough to be genuinely useful.' },
+            { n: '04', title: 'Go deeper in the app', desc: 'The full Noctua interpretation is 3–4x longer, with symbol breakdowns, emotional analysis, and reflection prompts — plus pattern tracking across all your dreams.' },
+          ].map(step => (
+            <div class="preview-step">
+              <span class="mono gold step-n">{step.n}</span>
+              <div>
+                <strong class="step-t">{step.title}</strong>
+                <p class="step-d">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .decoder-main {
+    padding-top: 7rem;
+    padding-bottom: 8rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+  }
+  .breadcrumb a { transition: opacity 0.15s; }
+  .breadcrumb a:hover { opacity: 0.7; }
+
+  .section-label {
+    display: block;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.875rem;
+  }
+
+  .decoder-title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .decoder-sub {
+    font-size: 1.125rem;
+    color: var(--text-soft);
+    max-width: 560px;
+    line-height: 1.65;
+  }
+
+  .coming-soon {
+    max-width: 640px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    border-color: var(--gold-dim);
+  }
+
+  .coming-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .coming-desc {
+    color: var(--text-soft);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .coming-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .decoder-preview {
+    margin-top: 5rem;
+    max-width: 640px;
+  }
+
+  .preview-heading {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .preview-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .preview-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: flex-start;
+  }
+  .preview-step:first-child { border-top: 1px solid var(--rule-soft); }
+
+  .step-n {
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  .step-t {
+    display: block;
+    font-family: var(--font-slab);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.375rem;
+  }
+  .step-d {
+    color: var(--text-soft);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+</style>

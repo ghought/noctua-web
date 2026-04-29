@@ -1,0 +1,95 @@
+---
+// Replace BEEHIIV_PUBLICATION_ID with your actual Beehiiv publication ID
+// Found at: app.beehiiv.com → Settings → Publication → Embed
+const BEEHIIV_PUBLICATION_ID = 'YOUR_PUBLICATION_ID';
+---
+
+<div class="newsletter-wrap">
+  <div class="newsletter-label">
+    <span class="mono gold">THE NIGHT REVIEW</span>
+    <span class="mono dim">· FREE WEEKLY</span>
+  </div>
+  <h2 class="newsletter-heading">
+    A weekly letter on dreams, psychology, and the inner life.
+  </h2>
+  <p class="newsletter-desc">
+    Interpretation deep dives, a reader dream of the week, and one reflection prompt to carry with you. Join dreamers who've made sense of what happens when they close their eyes.
+  </p>
+
+  {BEEHIIV_PUBLICATION_ID === 'YOUR_PUBLICATION_ID' ? (
+    <!-- Placeholder form — replace with Beehiiv embed once you have a publication ID -->
+    <form class="newsletter-form" onsubmit="return false;" aria-label="Newsletter signup">
+      <input
+        type="email"
+        placeholder="your@email.com"
+        class="email-input"
+        required
+        aria-label="Email address"
+      />
+      <button type="submit" class="btn-primary">Subscribe →</button>
+    </form>
+    <p class="newsletter-note mono dim">Replace BEEHIIV_PUBLICATION_ID in NewsletterForm.astro with your Beehiiv embed ID.</p>
+  ) : (
+    <iframe
+      src={`https://embeds.beehiiv.com/${BEEHIIV_PUBLICATION_ID}?slim=true`}
+      data-test-id="beehiiv-embed"
+      height="52"
+      frameborder="0"
+      scrolling="no"
+      style="width: 100%; max-width: 480px; border-radius: 0; overflow: hidden;"
+      title="Subscribe to The Night Review"
+    />
+  )}
+</div>
+
+<style>
+  .newsletter-wrap { max-width: 560px; }
+
+  .newsletter-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-heading {
+    font-size: clamp(1.375rem, 3vw, 1.875rem);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .newsletter-desc {
+    color: var(--text-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    max-width: 480px;
+  }
+
+  .email-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .email-input::placeholder { color: var(--text-dim); }
+  .email-input:focus { border-color: var(--gold); }
+
+  .newsletter-note {
+    margin-top: 0.75rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+  }
+</style>

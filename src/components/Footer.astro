@@ -1,0 +1,105 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="mono gold">NOCTUA</span>
+      <p class="footer-tagline">A dream journal for the inner life.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <div class="footer-col">
+        <span class="mono dim col-heading">Product</span>
+        <a href="/#frameworks">Frameworks</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="#download">Download</a>
+      </div>
+      <div class="footer-col">
+        <span class="mono dim col-heading">Content</span>
+        <a href="/blog">Dream Journal</a>
+        <a href="/dream-decoder">Dream Decoder</a>
+      </div>
+      <div class="footer-col">
+        <span class="mono dim col-heading">Legal</span>
+        <a href="https://noctua.up.railway.app/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://noctua.up.railway.app/terms" target="_blank" rel="noopener">Terms of Use</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <hr class="hairline" />
+    <div class="footer-meta">
+      <span class="mono dim">&copy; {year} NOCTUA</span>
+      <span class="mono dim">·</span>
+      <span class="mono dim">NOCTUA IS A REFLECTION TOOL, NOT A SUBSTITUTE FOR PROFESSIONAL MENTAL HEALTH CARE.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .footer-inner {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-brand { max-width: 240px; }
+  .footer-tagline {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    line-height: 1.55;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .col-heading {
+    font-size: 0.625rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 0.25rem;
+  }
+  .footer-col a {
+    color: var(--text-soft);
+    font-size: 0.9375rem;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom { padding-top: 0; }
+
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: 1.25rem;
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+  }
+</style>

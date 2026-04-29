@@ -1,0 +1,169 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Base
+  title="Dream Journal — Noctua"
+  description="Articles on dream psychology, interpretation frameworks, and the practice of keeping a dream journal. Written from the intersection of neuroscience, Jungian psychology, and lived experience."
+>
+  <main class="blog-main">
+    <header class="blog-header">
+      <div class="container">
+        <span class="mono gold">NOCTUA · DREAM JOURNAL</span>
+        <h1 class="blog-page-title">
+          The Journal
+        </h1>
+        <p class="blog-page-desc">
+          Articles on dream psychology, interpretation frameworks, and what happens when you start paying attention to what you dream.
+        </p>
+        <hr class="hairline" style="margin-top: 2.5rem;" />
+      </div>
+    </header>
+
+    <section class="container blog-index">
+      {posts.length === 0 ? (
+        <p class="empty mono dim">No posts yet. Check back soon.</p>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post, i) => (
+            <li>
+              <a href={`/blog/${post.slug}`} class="post-row">
+                <div class="post-row-left">
+                  <span class="mono dim post-index">
+                    {String(posts.length - i).padStart(2, '0')}
+                  </span>
+                </div>
+                <div class="post-row-body">
+                  <div class="post-row-meta">
+                    <span class="mono dim">
+                      {post.data.pubDate.toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'long', day: 'numeric',
+                      })}
+                    </span>
+                    {post.data.readTime && (
+                      <span class="mono dim">· {post.data.readTime}</span>
+                    )}
+                  </div>
+                  <h2 class="post-row-title">{post.data.title}</h2>
+                  <p class="post-row-desc">{post.data.description}</p>
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="post-row-tags">
+                      {post.data.tags.map(tag => (
+                        <span class="tag mono">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div class="post-row-cta">
+                  <span class="mono gold">Read →</span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  </main>
+</Base>
+
+<style>
+  .blog-main { padding-bottom: 6rem; }
+
+  .blog-header {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+
+  .blog-page-title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-page-desc {
+    font-size: 1.125rem;
+    color: var(--text-soft);
+    max-width: 560px;
+    line-height: 1.65;
+  }
+
+  .blog-index { padding-top: 2.5rem; }
+
+  .empty { font-size: 0.6875rem; letter-spacing: 0.14em; padding: 3rem 0; }
+
+  .post-list { list-style: none; }
+
+  .post-row {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: start;
+    transition: border-color 0.15s;
+  }
+  .post-row:hover { border-color: var(--rule); }
+  .post-list li:first-child .post-row { border-top: 1px solid var(--rule-soft); }
+
+  .post-row-left {
+    padding-top: 0.25rem;
+  }
+  .post-index {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .post-row-meta {
+    display: flex;
+    gap: 0.375rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.625rem;
+  }
+
+  .post-row-title {
+    font-family: var(--font-slab);
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    transition: color 0.15s;
+  }
+  .post-row:hover .post-row-title { color: var(--gold); }
+
+  .post-row-desc {
+    font-size: 0.9375rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 0.875rem;
+  }
+
+  .post-row-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--rule);
+    color: var(--text-dim);
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+  }
+
+  .post-row-cta {
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    padding-top: 0.25rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .post-row:hover .post-row-cta { opacity: 1; }
+</style>

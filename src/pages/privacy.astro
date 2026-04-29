@@ -4,65 +4,109 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="Privacy Policy — Noctua"
-  description="Noctua's privacy policy. Your dreams are deeply personal — we take that seriously."
+  description="Noctua's privacy policy. Your dreams are yours — here's exactly what we collect, what we don't, and why."
 >
-  <main class="util-main">
+  <main class="legal-main">
     <div class="container">
-      <header class="util-header">
+      <header class="legal-header">
         <nav class="breadcrumb">
           <a href="/" class="mono gold">← NOCTUA</a>
         </nav>
         <span class="mono gold section-label">LEGAL</span>
-        <h1 class="util-title">Privacy Policy</h1>
-        <p class="util-sub">
-          Your dreams are deeply personal. This policy explains exactly what we collect,
-          what we do with it, and how we protect it.
-        </p>
+        <h1 class="legal-title">Privacy Policy</h1>
+        <p class="mono dim legal-meta">EFFECTIVE DATE · JUNE 1, 2025</p>
         <hr class="hairline" style="margin-top: 2rem;" />
       </header>
 
-      <div class="util-body">
-        <div class="redirect-notice frame-box">
-          <p class="mono gold" style="margin-bottom: 0.75rem; font-size: 0.625rem; letter-spacing: 0.16em;">FULL POLICY</p>
-          <p style="color: var(--text-soft); font-size: 1.0625rem; line-height: 1.7; margin-bottom: 1.5rem;">
-            The complete Noctua Privacy Policy is published on the app server and kept current there.
-            Click below to read it in full.
-          </p>
-          <a
-            href="https://noctua.up.railway.app/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-primary"
-          >
-            Read the Full Privacy Policy →
-          </a>
-        </div>
+      <div class="legal-body">
 
-        <div class="util-summary">
-          <h2>The short version</h2>
-          <p>
-            Dreams are among the most private things a person can share. We designed Noctua's
-            data practices around that premise:
-          </p>
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">I · Overview</h2>
+          <p>Noctua is a dream journal. Your dreams are yours. We designed Noctua with a strong bias toward local storage and minimal data collection. This policy explains exactly what we collect, what we don't, and why.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">II · What We Collect</h2>
+          <p><strong>Your dream entries are stored locally on your device.</strong> We do not upload, sync, or store your dream text, moods, or titles on any server unless you explicitly use a feature that requires it (such as AI interpretation).</p>
+          <p>When you request an AI interpretation, the text of the relevant dream entry is transmitted to our server and then to Anthropic's Claude API to generate your interpretation. We do not store this text after the response is returned. We do not use your dream content to train any AI model.</p>
+          <p>We collect:</p>
           <ul>
-            <li>Your dream content is encrypted at rest and in transit.</li>
-            <li>We never use your dream content to train AI models — by contract and by design.</li>
-            <li>We collect only what we need to make the app work.</li>
-            <li>No third-party analytics pipelines ever process your dream content.</li>
-            <li>You can export all your data at any time, or delete your account and all associated data permanently.</li>
-            <li>We write our privacy policies in plain language, not legalese.</li>
+            <li>Dream text sent for interpretation (not stored after response)</li>
+            <li>Purchase and subscription status (managed by RevenueCat — see below)</li>
+            <li>Anonymous usage events if you opt in (not currently implemented)</li>
           </ul>
-          <p>
-            Questions? Reach us at <a href="mailto:privacy@noctua.app">privacy@noctua.app</a>.
-          </p>
-        </div>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">III · What We Do Not Collect</h2>
+          <ul>
+            <li>Your name, email address, or account credentials</li>
+            <li>Your location</li>
+            <li>Your contacts, camera, or microphone (unless you use the voice recording feature, which processes audio locally)</li>
+            <li>Health or biometric data</li>
+            <li>Advertising identifiers</li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">IV · Voice Recording</h2>
+          <p>If you use the voice recording feature to capture a dream, audio is processed locally on your device using the Web Speech API or native speech recognition. Audio is not transmitted to our servers. The resulting text transcript is stored locally on your device.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">V · Subscriptions &amp; Purchases</h2>
+          <p>Subscription and purchase management is handled by RevenueCat (revenuecat.com). RevenueCat may collect certain device identifiers and purchase history to manage your subscription. Please review <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's privacy policy</a> for details. Noctua does not receive or store your payment information.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">VI · AI Interpretation</h2>
+          <p>Interpretations are generated by Anthropic's Claude API. Your dream text is sent to Anthropic solely to generate the interpretation. Anthropic's use of API data is governed by their <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> and API usage policy — Anthropic does not use API inputs to train models by default.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">VII · Local Notifications</h2>
+          <p>If you enable morning reminders, Noctua schedules local notifications entirely on your device. No data is transmitted to our servers for this purpose.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">VIII · Third-Party Services</h2>
+          <ul>
+            <li><strong>Anthropic Claude API</strong> — AI interpretation. <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+            <li><strong>RevenueCat</strong> — Subscription management. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+            <li><strong>Railway</strong> — Server hosting. <a href="https://railway.app/legal/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">IX · Data Deletion</h2>
+          <p>Because we do not maintain an account system or cloud storage for your dream entries, you can delete all local data at any time by deleting the app from your device. If you have an active subscription managed by RevenueCat, you may also contact us to request deletion of any RevenueCat-associated data.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">X · Children</h2>
+          <p>Noctua is not directed to children under 13. We do not knowingly collect personal information from children under 13.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">XI · Changes to This Policy</h2>
+          <p>We may update this policy. When we do, we will update the effective date above. Continued use of Noctua after changes constitutes acceptance of the updated policy.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2 class="mono gold legal-h2">XII · Contact</h2>
+          <p>Questions or requests: <a href="mailto:privacy@noctua.app">privacy@noctua.app</a></p>
+        </section>
+
+        <hr class="hairline" style="margin-top: 3rem;" />
+        <p class="mono dim legal-foot">NOCTUA · DREAM JOURNAL · noctua.app/privacy</p>
+
       </div>
     </div>
   </main>
 </Base>
 
 <style>
-  .util-main {
+  .legal-main {
     padding-top: 7rem;
     padding-bottom: 8rem;
   }
@@ -71,8 +115,8 @@ import Base from '../layouts/Base.astro';
     margin-bottom: 2rem;
     font-size: 0.6875rem;
     letter-spacing: 0.14em;
-    transition: opacity 0.15s;
   }
+  .breadcrumb a { transition: opacity 0.15s; }
   .breadcrumb a:hover { opacity: 0.7; }
 
   .section-label {
@@ -82,66 +126,81 @@ import Base from '../layouts/Base.astro';
     margin-bottom: 0.875rem;
   }
 
-  .util-title {
+  .legal-title {
     font-size: clamp(2.25rem, 5vw, 3.5rem);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
-  .util-sub {
-    font-size: 1.125rem;
-    color: var(--text-soft);
-    max-width: 560px;
-    line-height: 1.65;
+  .legal-meta {
+    font-size: 0.625rem;
+    letter-spacing: 0.18em;
   }
 
-  .util-body {
+  .legal-body {
     padding-top: 3rem;
     max-width: 680px;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
   }
 
-  .redirect-notice {
-    padding: 2rem;
+  .legal-section {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .legal-section:last-of-type {
+    border-bottom: none;
   }
 
-  .util-summary h2 {
-    font-size: 1.5rem;
+  .legal-h2 {
+    font-family: var(--font-mono) !important;
+    font-size: 0.625rem !important;
+    letter-spacing: 0.2em;
     margin-bottom: 1rem;
   }
-  .util-summary p {
+
+  .legal-body p {
     color: var(--text-soft);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
   }
-  .util-summary ul {
+  .legal-body p:last-child { margin-bottom: 0; }
+
+  .legal-body strong { color: var(--text); font-weight: 500; }
+
+  .legal-body ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
+    gap: 0.625rem;
+    margin-bottom: 1rem;
   }
-  .util-summary li {
+  .legal-body li {
     display: flex;
     gap: 0.875rem;
     color: var(--text-soft);
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.9375rem;
+    line-height: 1.65;
   }
-  .util-summary li::before {
+  .legal-body li::before {
     content: '—';
     color: var(--gold);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     flex-shrink: 0;
-    margin-top: 0.2rem;
+    margin-top: 0.175rem;
   }
-  .util-summary a {
+
+  .legal-body a {
     color: var(--gold);
     text-decoration: underline;
     text-decoration-color: var(--gold-dim);
     text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s;
+  }
+  .legal-body a:hover { text-decoration-color: var(--gold); }
+
+  .legal-foot {
+    font-size: 0.5625rem;
+    letter-spacing: 0.16em;
+    margin-top: 1.5rem;
   }
 </style>

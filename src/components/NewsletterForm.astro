@@ -1,5 +1,5 @@
 ---
-const BEEHIIV_PUBLICATION_ID = 'pub_386e32f1-11eb-4754-9def-1cb43e66bd86';
+// No server-side props needed — form submits to /api/subscribe
 ---
 
 <div class="newsletter-wrap">
@@ -11,19 +11,82 @@ const BEEHIIV_PUBLICATION_ID = 'pub_386e32f1-11eb-4754-9def-1cb43e66bd86';
     A weekly letter on dreams, psychology, and the inner life.
   </h2>
   <p class="newsletter-desc">
-    Interpretation deep dives, a reader dream of the week, and one reflection prompt to carry with you. Join dreamers who've made sense of what happens when they close their eyes.
+    Interpretation deep dives, a reader dream of the week, and one reflection
+    prompt to carry with you. Join dreamers who've made sense of what happens
+    when they close their eyes.
   </p>
 
-  <iframe
-    src={`https://embeds.beehiiv.com/${BEEHIIV_PUBLICATION_ID}?slim=true`}
-    data-test-id="beehiiv-embed"
-    height="52"
-    frameborder="0"
-    scrolling="no"
-    style="width: 100%; max-width: 480px; overflow: hidden;"
-    title="Subscribe to The Night Review"
-  />
+  <form
+    id="newsletter-form"
+    class="newsletter-form"
+    action="/api/subscribe"
+    method="POST"
+    novalidate
+  >
+    <input
+      type="email"
+      name="email"
+      id="newsletter-email"
+      placeholder="your@email.com"
+      class="email-input"
+      required
+      autocomplete="email"
+      aria-label="Email address"
+    />
+    <button type="submit" class="btn-primary subscribe-btn">
+      <span class="btn-label">Subscribe →</span>
+    </button>
+  </form>
+
+  <p class="newsletter-status mono" id="newsletter-status" aria-live="polite"></p>
 </div>
+
+<script>
+  const form     = document.getElementById('newsletter-form') as HTMLFormElement;
+  const input    = document.getElementById('newsletter-email') as HTMLInputElement;
+  const status   = document.getElementById('newsletter-status') as HTMLParagraphElement;
+  const btn      = form?.querySelector('.subscribe-btn') as HTMLButtonElement;
+  const btnLabel = form?.querySelector('.btn-label') as HTMLSpanElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!email) return;
+
+    // Loading state
+    btn.disabled  = true;
+    btnLabel.textContent = 'Subscribing…';
+    status.textContent = '';
+    status.className = 'newsletter-status mono';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        // Success — replace the form with confirmation
+        form.style.display = 'none';
+        status.textContent = '✓ You\'re in. First issue lands soon.';
+        status.classList.add('status-success');
+      } else {
+        status.textContent = data.error ?? 'Something went wrong. Please try again.';
+        status.classList.add('status-error');
+        btn.disabled  = false;
+        btnLabel.textContent = 'Subscribe →';
+      }
+    } catch {
+      status.textContent = 'Network error. Please try again.';
+      status.classList.add('status-error');
+      btn.disabled  = false;
+      btnLabel.textContent = 'Subscribe →';
+    }
+  });
+</script>
 
 <style>
   .newsletter-wrap { max-width: 560px; }
@@ -47,4 +110,38 @@ const BEEHIIV_PUBLICATION_ID = 'pub_386e32f1-11eb-4754-9def-1cb43e66bd86';
     line-height: 1.7;
     margin-bottom: 1.75rem;
   }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    max-width: 480px;
+  }
+
+  .email-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+  .email-input::placeholder { color: var(--text-dim); }
+  .email-input:focus { border-color: var(--gold); }
+
+  .subscribe-btn:disabled { opacity: 0.6; cursor: default; }
+
+  .newsletter-status {
+    margin-top: 0.875rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    min-height: 1.2em;
+  }
+  .status-success { color: var(--gold); }
+  .status-error   { color: var(--ruby); }
 </style>

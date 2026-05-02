@@ -1,14 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" fill="#000"/>
-  <ellipse cx="16" cy="20" rx="7.5" ry="8.5" stroke="#c9a866" stroke-width="1.2"/>
-  <circle cx="16" cy="11.5" r="5.5" stroke="#c9a866" stroke-width="1.2"/>
-  <circle cx="13.5" cy="11.5" r="1.8" stroke="#c9a866" stroke-width="1.2"/>
-  <circle cx="18.5" cy="11.5" r="1.8" stroke="#c9a866" stroke-width="1.2"/>
-  <circle cx="13.5" cy="11.5" r="0.6" fill="#c9a866"/>
-  <circle cx="18.5" cy="11.5" r="0.6" fill="#c9a866"/>
-  <path d="M15.2 13.2L16 14.5L16.8 13.2" fill="#c9a866"/>
-  <path d="M11.5 6.5L13.2 9" stroke="#c9a866" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M20.5 6.5L18.8 9" stroke="#c9a866" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M8.5 18Q5 20 8.5 25" stroke="#c9a866" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M23.5 18Q27 20 23.5 25" stroke="#c9a866" stroke-width="1.2" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#16130d"/>
+      <stop offset="48%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="260" y1="160" x2="760" y2="840" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f0dca5"/>
+      <stop offset="42%" stop-color="#c9a866"/>
+      <stop offset="100%" stop-color="#755c27"/>
+    </linearGradient>
+    <filter id="softGold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.79 0 0 0 0 0.66 0 0 0 0 0.40 0 0 0 0.28 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="210" fill="url(#bg)"/>
+  <circle cx="512" cy="512" r="370" fill="none" stroke="url(#gold)" stroke-width="22" opacity="0.92"/>
+  <circle cx="512" cy="512" r="314" fill="none" stroke="#c9a866" stroke-width="2" opacity="0.32"/>
+  <circle cx="512" cy="512" r="268" fill="#050505" stroke="#2a2214" stroke-width="3"/>
+
+  <g filter="url(#softGold)">
+    <path d="M314 395 C350 284 430 230 512 230 C594 230 674 284 710 395 C748 505 702 650 512 785 C322 650 276 505 314 395 Z" fill="url(#gold)"/>
+    <path d="M362 404 C396 345 448 318 512 318 C576 318 628 345 662 404 C634 382 594 376 560 395 C540 406 524 424 512 448 C500 424 484 406 464 395 C430 376 390 382 362 404 Z" fill="#050505" opacity="0.96"/>
+    <path d="M376 314 L330 178 L458 266 Z" fill="url(#gold)"/>
+    <path d="M648 314 L694 178 L566 266 Z" fill="url(#gold)"/>
+    <circle cx="422" cy="474" r="86" fill="#050505"/>
+    <circle cx="602" cy="474" r="86" fill="#050505"/>
+    <circle cx="422" cy="474" r="54" fill="none" stroke="url(#gold)" stroke-width="20"/>
+    <circle cx="602" cy="474" r="54" fill="none" stroke="url(#gold)" stroke-width="20"/>
+    <circle cx="422" cy="474" r="18" fill="url(#gold)"/>
+    <circle cx="602" cy="474" r="18" fill="url(#gold)"/>
+    <path d="M512 525 L468 590 L512 638 L556 590 Z" fill="#050505"/>
+    <path d="M512 538 L486 584 L512 612 L538 584 Z" fill="url(#gold)"/>
+    <path d="M382 646 C428 690 468 718 512 742 C556 718 596 690 642 646" fill="none" stroke="#050505" stroke-width="32" stroke-linecap="round" opacity="0.92"/>
+  </g>
+
+  <g opacity="0.62">
+    <circle cx="512" cy="146" r="8" fill="#c9a866"/>
+    <circle cx="250" cy="274" r="5" fill="#c9a866"/>
+    <circle cx="774" cy="274" r="5" fill="#c9a866"/>
+    <circle cx="210" cy="700" r="4" fill="#c9a866"/>
+    <circle cx="814" cy="700" r="4" fill="#c9a866"/>
+  </g>
 </svg>

@@ -9,45 +9,116 @@ interface Props {
   description?: string;
   ogImage?: string;
   noIndex?: boolean;
+  /** Pass 'article' for blog posts */
+  ogType?: 'website' | 'article';
 }
 
 const {
   title,
   description = 'Noctua is a dream journal that interprets your dreams through Jungian, Cognitive, and Spiritual frameworks — and reveals patterns across your entire dream life.',
-  ogImage = '/og-default.png',
+  ogImage = '/og-image.png',
   noIndex = false,
+  ogType = 'website',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteUrl = 'https://noctua.app';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = new URL(ogImage, siteUrl).toString();
+
+// JSON-LD: WebSite + Organization (homepage only)
+const isHome = Astro.url.pathname === '/';
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Noctua',
+      description: 'A dream journal and interpretation app for iOS and Android.',
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Noctua',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.svg`,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@getnoctua.com',
+        contactType: 'customer support',
+      },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Noctua',
+      operatingSystem: 'iOS, Android',
+      applicationCategory: 'LifestyleApplication',
+      offers: [
+        { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
+        { '@type': 'Offer', price: '6.99', priceCurrency: 'USD', name: 'Explorer Monthly' },
+        { '@type': 'Offer', price: '59.99', priceCurrency: 'USD', name: 'Explorer Annual' },
+      ],
+      description: 'A dream journal with Jungian, Cognitive, and Spiritual interpretation frameworks.',
+    },
+  ],
+};
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalURL} />
-    {noIndex && <meta name="robots" content="noindex" />}
 
+    <!-- Canonical & indexing -->
+    <link rel="canonical" href={canonicalURL} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Primary meta -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Noctua" />
+    <meta name="theme-color" content="#000000" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Noctua" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Noctua — Dream Journal" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@noctuaapp" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Noctua — Dream Journal" />
 
-    <!-- Preconnect for Google Fonts (already loaded via CSS @import) -->
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- JSON-LD structured data -->
+    {isHome && (
+      <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    )}
+    <!-- Additional head content from child layouts -->
+    <slot name="head" />
   </head>
   <body>
     <Header />

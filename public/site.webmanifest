@@ -1,0 +1,21 @@
+{
+  "name": "Noctua — Dream Journal",
+  "short_name": "Noctua",
+  "description": "A dream journal that interprets your dreams through Jungian, Cognitive, and Spiritual frameworks.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

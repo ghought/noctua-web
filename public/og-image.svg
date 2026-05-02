@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d0b08"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0dca5"/>
+      <stop offset="42%" stop-color="#c9a866"/>
+      <stop offset="100%" stop-color="#755c27"/>
+    </linearGradient>
+    <radialGradient id="bg2" cx="50%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#16130d"/>
+      <stop offset="48%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="owlGold" x1="130" y1="80" x2="380" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f0dca5"/>
+      <stop offset="42%" stop-color="#c9a866"/>
+      <stop offset="100%" stop-color="#755c27"/>
+    </linearGradient>
+    <filter id="softGold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.79 0 0 0 0 0.66 0 0 0 0 0.40 0 0 0 0.28 0"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Constellation dots (left field) -->
+  <g opacity="0.22" fill="#c9a866">
+    <circle cx="60" cy="80" r="2.5"/>
+    <circle cx="140" cy="45" r="1.8"/>
+    <circle cx="210" cy="110" r="2"/>
+    <circle cx="90" cy="155" r="1.5"/>
+    <circle cx="175" cy="190" r="2.5"/>
+    <circle cx="40" cy="240" r="1.8"/>
+    <circle cx="130" cy="270" r="1.5"/>
+    <circle cx="220" cy="230" r="2"/>
+    <circle cx="80" cy="340" r="2"/>
+    <circle cx="190" cy="310" r="1.5"/>
+    <circle cx="50" cy="420" r="1.8"/>
+    <circle cx="160" cy="400" r="2.5"/>
+    <circle cx="240" cy="460" r="1.5"/>
+    <circle cx="100" cy="510" r="2"/>
+    <circle cx="180" cy="555" r="1.8"/>
+  </g>
+  <!-- Constellation lines -->
+  <g opacity="0.1" stroke="#c9a866" stroke-width="0.8" fill="none">
+    <line x1="60" y1="80" x2="140" y2="45"/>
+    <line x1="140" y1="45" x2="210" y2="110"/>
+    <line x1="60" y1="80" x2="90" y2="155"/>
+    <line x1="175" y1="190" x2="90" y2="155"/>
+    <line x1="175" y1="190" x2="210" y2="110"/>
+    <line x1="40" y1="240" x2="130" y2="270"/>
+    <line x1="130" y1="270" x2="220" y2="230"/>
+    <line x1="80" y1="340" x2="190" y2="310"/>
+    <line x1="50" y1="420" x2="160" y2="400"/>
+    <line x1="160" y1="400" x2="240" y2="460"/>
+    <line x1="100" y1="510" x2="180" y2="555"/>
+  </g>
+
+  <!-- Left divider line -->
+  <line x1="300" y1="60" x2="300" y2="570" stroke="#3a3730" stroke-width="1"/>
+
+  <!-- Text area -->
+  <!-- Eyebrow label -->
+  <text x="360" y="165" font-family="'Courier New', Courier, monospace" font-size="18" letter-spacing="6" fill="#c9a866" opacity="0.9">NOCTUA · DREAM JOURNAL</text>
+
+  <!-- Main headline — line 1 -->
+  <text x="360" y="265" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="#e8e6e0" font-style="italic">Your dreams are</text>
+  <!-- Main headline — line 2 -->
+  <text x="360" y="355" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="#c9a866" font-style="italic">trying to tell you</text>
+  <!-- Main headline — line 3 -->
+  <text x="360" y="445" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="#c9a866" font-style="italic">something.</text>
+
+  <!-- Tagline -->
+  <text x="362" y="520" font-family="'Courier New', Courier, monospace" font-size="16" letter-spacing="3" fill="#a8a59c" opacity="0.85">Jungian · Cognitive · Spiritual · Free to start</text>
+
+  <!-- Gold hairline under headline -->
+  <line x1="360" y1="480" x2="870" y2="480" stroke="#3a3730" stroke-width="1"/>
+
+  <!-- Owl icon (right side) — scaled from 1024 to ~240px, centered at x=1050, y=315 -->
+  <g transform="translate(930, 195) scale(0.234)">
+    <rect width="1024" height="1024" rx="210" fill="url(#bg2)"/>
+    <circle cx="512" cy="512" r="370" fill="none" stroke="url(#owlGold)" stroke-width="22" opacity="0.92"/>
+    <circle cx="512" cy="512" r="314" fill="none" stroke="#c9a866" stroke-width="2" opacity="0.32"/>
+    <circle cx="512" cy="512" r="268" fill="#050505" stroke="#2a2214" stroke-width="3"/>
+    <g filter="url(#softGold)">
+      <path d="M314 395 C350 284 430 230 512 230 C594 230 674 284 710 395 C748 505 702 650 512 785 C322 650 276 505 314 395 Z" fill="url(#owlGold)"/>
+      <path d="M362 404 C396 345 448 318 512 318 C576 318 628 345 662 404 C634 382 594 376 560 395 C540 406 524 424 512 448 C500 424 484 406 464 395 C430 376 390 382 362 404 Z" fill="#050505" opacity="0.96"/>
+      <path d="M376 314 L330 178 L458 266 Z" fill="url(#owlGold)"/>
+      <path d="M648 314 L694 178 L566 266 Z" fill="url(#owlGold)"/>
+      <circle cx="422" cy="474" r="86" fill="#050505"/>
+      <circle cx="602" cy="474" r="86" fill="#050505"/>
+      <circle cx="422" cy="474" r="54" fill="none" stroke="url(#owlGold)" stroke-width="20"/>
+      <circle cx="602" cy="474" r="54" fill="none" stroke="url(#owlGold)" stroke-width="20"/>
+      <circle cx="422" cy="474" r="18" fill="url(#owlGold)"/>
+      <circle cx="602" cy="474" r="18" fill="url(#owlGold)"/>
+      <path d="M512 525 L468 590 L512 638 L556 590 Z" fill="#050505"/>
+      <path d="M512 538 L486 584 L512 612 L538 584 Z" fill="url(#owlGold)"/>
+      <path d="M382 646 C428 690 468 718 512 742 C556 718 596 690 642 646" fill="none" stroke="#050505" stroke-width="32" stroke-linecap="round" opacity="0.92"/>
+    </g>
+    <g opacity="0.62">
+      <circle cx="512" cy="146" r="8" fill="#c9a866"/>
+      <circle cx="250" cy="274" r="5" fill="#c9a866"/>
+      <circle cx="774" cy="274" r="5" fill="#c9a866"/>
+      <circle cx="210" cy="700" r="4" fill="#c9a866"/>
+      <circle cx="814" cy="700" r="4" fill="#c9a866"/>
+    </g>
+  </g>
+</svg>
